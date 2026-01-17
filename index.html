@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un mensaje especial...</title>
+    <style>
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background-color: #000;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden; font-family: sans-serif;
+        }
+
+        /* Capa del botón de inicio */
+        #capaInicio {
+            position: fixed; z-index: 100;
+            width: 100%; height: 100%;
+            background: #000;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        #btnPlay {
+            padding: 15px 40px; font-size: 22px; font-weight: bold;
+            color: white; background: #0084ff;
+            border: none; border-radius: 50px; cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 132, 255, 0.5);
+        }
+
+        /* Contenedor de la bendición */
+        #contenedor {
+            display: none; text-align: center;
+            opacity: 0; transition: opacity 5s ease-in;
+        }
+
+        #imagen {
+            max-width: 85vw; max-height: 70vh;
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(255,255,255,0.2);
+            cursor: pointer;
+        }
+
+        #texto {
+            color: white; margin-top: 25px;
+            font-size: 20px; letter-spacing: 1px;
+            animation: parpadeo 2s infinite;
+        }
+
+        @keyframes parpadeo { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div id="capaInicio">
+        <button id="btnPlay" onclick="revelar()">VER MENSAJE</button>
+    </div>
+
+    <div id="contenedor">
+        <img id="imagen" src="jesus_bacon.jpg" onclick="irARoblox()">
+        <div id="texto">Toca la imagen para aceptar</div>
+    </div>
+
+    <audio id="musica">
+        <source src="roblox_classic.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function revelar() {
+            document.getElementById('capaInicio').style.display = 'none';
+            const contenedor = document.getElementById('contenedor');
+            const musica = document.getElementById('musica');
+
+            musica.play();
+            contenedor.style.display = 'block';
+            
+            // Inicia la aparición gradual
+            setTimeout(() => {
+                contenedor.style.opacity = '1';
+            }, 100);
+        }
+
+        function irARoblox() {
+            window.location.href = "https://www.roblox.com/";
+        }
+    </script>
+</body>
+</html>
